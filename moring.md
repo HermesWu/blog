@@ -192,8 +192,54 @@ xxxx/git-demo-1.git，复制并运行它
     mac: 安装 homebrew brew install tree which tree
     ```
 
+#### 脚本
 
+###### 写一个脚本
 
+1. 找个地方新建文件，后缀随意，一般来说脚本的后缀是 .sh。我喜欢把脚本放在 ~/local 目录里。（我知道你没有这个目录，创建这个目录不就行了）
+
+```
+mkdir ~/local
+cd ~/local
+touch demo.txt
+```
+
+2. 编辑 demo.txt，内容如下
+
+```
+ mkdir demo
+ cd demo
+ mkdir css js
+ touch index.html css/style.css js/main.js
+ exit
+```
+
+3. （Windows 用户请跳过这一步）给 demo.sh 添加执行权限 `chmod +x demo.txt`
+
+4. 在任意位置执行 `sh ~/local/demo.txt` 即可运行此脚本
+
+```
+cd ~/Desktop
+sh ~/local/demo.txt
+你会看到当前目录里多出一个 demo 目录，demo 目录里面还有一些文件
+好了，这个 demo.txt 就是你写出的第一个 Bash 脚本了。
+```
+
+5. 将 ~/local 添加到 PATH 里
+```
+`cd ~/local; pwd` 得到 local 的绝对路径
+创建 ~/.bashrc：`touch ~/.bashrc`
+编辑 ~/.bashrc：`start ~/.bashrc`，在最后一行添加 `export PATH="local的绝对路径:$PATH"`
+source ~/.bashrc
+之前你要运行 `sh ~/local/demo.txt`，现在你只需要运行 demo.txt 就行了（想想为什么，道理显而易见）
+```
+
+6. demo.txt 的后缀 .txt 很无聊，删掉它
+
+```
+    mv ~/local/demo.txt ~/local/demo
+    现在你只要运行 demo 就能执行该脚本了
+```
 
 
 

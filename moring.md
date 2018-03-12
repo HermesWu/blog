@@ -55,7 +55,7 @@ git add src/app/router/home/home.component.html
 1. 回到 Git Bash
 
 
-####本地使用
+#### 本地使用
 ###### 初始化
 1. 创建目录作为我们的项目目录：mkdir git-demo-1
 1. 进入目录 cd git-demo-1
@@ -107,6 +107,7 @@ A 的意思就是添加，也就是说你告诉 git，这些文件我要加到�
 1. git log 查看变更历史
 
 #### 本地仓库上传到github
+
 ######小tips
 ```
 看图，点击 SSH 按钮，点击 SSH 按钮，点击 SSH 按钮，我想你现在肯定不会忘了点击 SSH 按钮了吧~~~~

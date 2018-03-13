@@ -277,73 +277,73 @@ JS 的全称叫做 JavaScript（Java脚本），虽然 JS 和 Java 没什么关�
 
 ###### JS切换目录
 
-    ```
+```
 console.log(process.cwd()) // 打印当前目录
 // process.chdir('~/Desktop'); // 这句话不行的，因为 JS 不认识 ~ 目录
 process.chdir("/Users/frank/Desktop")
 console.log(process.cwd()) // 打印当前目录
 console.log 相当于echo
-    ```
+```
 
-    js脚本创建目录
+js脚本创建目录
 
-    ```
-    Google nodejs create dir
-    et fs = require("fs")
-    fs.mkdirSync("demo")
-    ```
+```
+Google nodejs create dir
+et fs = require("fs")
+fs.mkdirSync("demo")
+```
 
 
-    js脚本创建文件
+js脚本创建文件
 
-    ```
-    let fs = require('fs')
-    fs.writeFileSync("./index.html", "")
-    ```
+```
+let fs = require('fs')
+fs.writeFileSync("./index.html", "")
+```
 
-    js脚本重写demo.sh
-    
-    ```
-    1. 创建 ~/local/jsdemo.js 内容如下
-    var fs = require('fs')
+js脚本重写demo.sh
 
-    var dirName = process.argv[2] //你穿的参数是从第二个开始的
+```
+1. 创建 ~/local/jsdemo.js 内容如下
+var fs = require('fs')
 
-    fs.mkdirSync("./" + dirName) //mkdir $1
-    process.chdir("./" + dirName) //cd $1
-    fs.mkdirSync('css') //mkdir css
-    fs.mkdirSync('js') //mkdir js
+var dirName = process.argv[2] //你穿的参数是从第二个开始的
 
-    fs.writeFileSync("./index.html", "")
-    fs.writeFileSync("css/style.css", "")
-    fs.writeFileSync("./js/main.js","")
+fs.mkdirSync("./" + dirName) //mkdir $1
+process.chdir("./" + dirName) //cd $1
+fs.mkdirSync('css') //mkdir css
+fs.mkdirSync('js') //mkdir js
 
-    process.exit(0)
-    2.（Windows 用户跳过这一步）给 jsdemo.js 加上执行权限 chmod +x ~/local/jsdemo.js
-    3. cd ~/desktop
-    4. node ~/local/jsdemo.js zzz
-    zzz 目录创建成功
-    ```
+fs.writeFileSync("./index.html", "")
+fs.writeFileSync("css/style.css", "")
+fs.writeFileSync("./js/main.js","")
 
-    ```
-    if [ -d $1 ]; then
-        ho ‘$! 已经存在’
-        exit
-    else
-        mkdir $1
-        cd $1
-        mkdir css js
-        touch index.html css/style.css js/main.js
-        echo \<\!DOCTYPE\> >> index.html
-        echo \<title\>hello\</title\> >> index.html
-        echo \<h1\>Hi\</h1\> >> index.html
-        echo h1\{color\: red\;\} >> css/style.css
-        echo var string \= \”Hello World\” >> js/main.js
-        echo alert\(string\) >> js/main.js
-        exit
-    fi
+process.exit(0)
+2.（Windows 用户跳过这一步）给 jsdemo.js 加上执行权限 chmod +x ~/local/jsdemo.js
+3. cd ~/desktop
+4. node ~/local/jsdemo.js zzz
+zzz 目录创建成功
+```
 
-    ```
+```
+if [ -d $1 ]; then
+    ho ‘$! 已经存在’
+    exit
+else
+    mkdir $1
+    cd $1
+    mkdir css js
+    touch index.html css/style.css js/main.js
+    echo \<\!DOCTYPE\> >> index.html
+    echo \<title\>hello\</title\> >> index.html
+    echo \<h1\>Hi\</h1\> >> index.html
+    echo h1\{color\: red\;\} >> css/style.css
+    echo var string \= \”Hello World\” >> js/main.js
+    echo alert\(string\) >> js/main.js
+    exit
+fi
+
+```
 
 ###### shebang
 

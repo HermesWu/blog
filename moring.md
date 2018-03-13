@@ -241,6 +241,112 @@ source ~/.bashrc
     现在你只要运行 demo 就能执行该脚本了
 ```
 
+###### 细节
+1. PATH的作用
+    你每次在 Bash 里面输入一个命令时（比如 ls、cp、demo），Bash 都会去 PATH 列表里面寻找对应的文件，如果找到了就执行。
+2. 使用 type demo 可以看到寻找过程
+3. 使用 which demo 可以看到寻找结果
+4. 文件后缀的作用：毫无作用
+5. 你以为一个文件以 .exe 结尾就一定可以双击吗？你以为一个文件以 .png 结尾就一定是图片吗？图样图森破
+
+###### 添加参数，判断
+
+```
+if [ -d $1 ]; then
+  echo 'error: dir exists'
+  exit
+else
+  mkdir $1
+  cd $1
+  mkdir css js
+  touch index.html css/style.css js/main.js
+  echo 'success'
+  exit
+fi
+```
+执行 `demo && echo '结束'`
+
+#### Node.js写脚本
+
+上面我们写的脚本叫做 Bash Script（Bash脚本）。
+
+JS 的全称叫做 JavaScript（Java脚本），虽然 JS 和 Java 没什么关系，但是 JS 依然是一种脚本。
+
+1. 我们在 Bash 命令行里输入 Bash 命令，也可以在 Node.js 命令行里输入 JS 命令（<kbd>Ctrl</kbd> + <kbd>D</kbd> 退出）
+2. Bash 脚本能做的事情，JS 脚本也能做。(sh demo.sh 对应 node demo.js）
+
+###### JS切换目录
+
+    ```
+console.log(process.cwd()) // 打印当前目录
+// process.chdir('~/Desktop'); // 这句话不行的，因为 JS 不认识 ~ 目录
+process.chdir("/Users/frank/Desktop")
+console.log(process.cwd()) // 打印当前目录
+console.log 相当于echo
+    ```
+    js脚本创建目录
+    ```
+    Google nodejs create dir
+    et fs = require("fs")
+    fs.mkdirSync("demo")
+    ```
+    js脚本创建文件
+    ```
+    let fs = require('fs')
+    fs.writeFileSync("./index.html", "")
+    ```
+    js脚本重写demo.sh
+    ```
+    1. 创建 ~/local/jsdemo.js 内容如下
+    var fs = require('fs')
+
+    var dirName = process.argv[2] //你穿的参数是从第二个开始的
+
+    fs.mkdirSync("./" + dirName) //mkdir $1
+    process.chdir("./" + dirName) //cd $1
+    fs.mkdirSync('css') //mkdir css
+    fs.mkdirSync('js') //mkdir js
+
+    fs.writeFileSync("./index.html", "")
+    fs.writeFileSync("css/style.css", "")
+    fs.writeFileSync("./js/main.js","")
+
+    process.exit(0)
+    2.（Windows 用户跳过这一步）给 jsdemo.js 加上执行权限 chmod +x ~/local/jsdemo.js
+    3. cd ~/desktop
+    4. node ~/local/jsdemo.js zzz
+    zzz 目录创建成功
+    ```
+
+    ```
+    if [ -d $1 ]; then
+        ho ‘$! 已经存在’
+        exit
+    else
+        mkdir $1
+        cd $1
+        mkdir css js
+        touch index.html css/style.css js/main.js
+        echo \<\!DOCTYPE\> >> index.html
+        echo \<title\>hello\</title\> >> index.html
+        echo \<h1\>Hi\</h1\> >> index.html
+        echo h1\{color\: red\;\} >> css/style.css
+        echo var string \= \”Hello World\” >> js/main.js
+        echo alert\(string\) >> js/main.js
+        exit
+    fi
+
+    ```
+
+###### shebang
+
+我们每次执行 ~/local/jsdemo.js 都要用 node 来执行，能不能做到不加 node 也能执行呢（也就是指定执行环境），可以，在 jsdemo.js 第一行加上这一句即可：
+`#!/usr/bin/env node`
+1. 然后你就可以直接用 ~/local/jsdemo.js zzz 了（省得输入 node 了）。
+1. 如果你已经把 ~/local 加入了 PATH，那么甚至可以直接输入 jsdemo.js zzz 来执行。
+1. 如果你再把 jsdemo.js 的后缀 .js 去掉，就可以直接 jsdemo zzz 了。
+注意，你每次执行前最好删掉 zzz 目录，以免发生冲突。
+
 
 
 

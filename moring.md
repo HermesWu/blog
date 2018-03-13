@@ -284,18 +284,25 @@ process.chdir("/Users/frank/Desktop")
 console.log(process.cwd()) // 打印当前目录
 console.log 相当于echo
     ```
+
     js脚本创建目录
+
     ```
     Google nodejs create dir
     et fs = require("fs")
     fs.mkdirSync("demo")
     ```
+
+
     js脚本创建文件
+
     ```
     let fs = require('fs')
     fs.writeFileSync("./index.html", "")
     ```
+
     js脚本重写demo.sh
+    
     ```
     1. 创建 ~/local/jsdemo.js 内容如下
     var fs = require('fs')
